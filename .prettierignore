@@ -1,0 +1,14 @@
+.gitkeep
+.env*
+*.ico
+*.lock
+prisma/migrations
+.next
+.yarn
+.pnp.*
+node_modules
+README.md
+/logs
+/upload
+/dist
+/.env

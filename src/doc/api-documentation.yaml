@@ -1,0 +1,127 @@
+openapi: 3.1.0
+info:
+  title: backend
+  version: 1.0.0
+paths:
+  /api/user/current:
+    get:
+      operationId: GetApiUserCurrent
+      summary: Retrieve current user
+      description: Retrieve a user according to id input or current user in cookie if
+        no id provided
+      tags:
+        - users
+      responses:
+        "200":
+          description: GET /api/user/current Positive response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    const: success
+                  data:
+                    type: object
+                    properties: {}
+                    additionalProperties: false
+                required:
+                  - status
+                  - data
+                additionalProperties: false
+        "400":
+          description: GET /api/user/current Negative response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    const: error
+                  error:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                    required:
+                      - message
+                    additionalProperties: false
+                required:
+                  - status
+                  - error
+                additionalProperties: false
+              examples:
+                example1:
+                  value:
+                    status: error
+                    error:
+                      message: Sample error message
+    head:
+      operationId: HeadApiUserCurrent
+      summary: Retrieve current user
+      description: Retrieve a user according to id input or current user in cookie if
+        no id provided
+      tags:
+        - users
+      responses:
+        "200":
+          description: HEAD /api/user/current Positive response
+        "400":
+          description: HEAD /api/user/current Negative response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    const: error
+                  error:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                    required:
+                      - message
+                    additionalProperties: false
+                required:
+                  - status
+                  - error
+                additionalProperties: false
+              examples:
+                example1:
+                  value:
+                    status: error
+                    error:
+                      message: Sample error message
+components:
+  schemas: {}
+  responses: {}
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}
+tags:
+  - name: Public
+    description: Endpoints accessible without authentication
+  - name: Display
+    description: Endpoints available for display usage
+  - name: Auth
+    description: Authenticate users and devices endpoints
+  - name: Users
+    description: Managing Users endpoints
+  - name: Regions
+    description: Managing regions endpoints
+  - name: Communities
+    description: Managing communities endpoints
+  - name: Posts
+    description: Managing posts, comments and like endpoints
+  - name: Devices
+    description: Managing devices endpoints
+servers:
+  - url: http://localhost:false
