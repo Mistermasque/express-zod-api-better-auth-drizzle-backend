@@ -2,7 +2,6 @@
 .env*
 *.ico
 *.lock
-prisma/migrations
 .next
 .yarn
 .pnp.*
@@ -11,4 +10,6 @@ README.md
 /logs
 /upload
 /dist
+/tmp
 /.env
+/src/db/migrations

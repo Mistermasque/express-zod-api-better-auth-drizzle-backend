@@ -5,9 +5,13 @@ import {
   timestamp,
   boolean,
   uuid,
+  pgEnum,
 } from "drizzle-orm/pg-core";
 import { sessionsTable } from "./sessions-table";
 import { accountsTable } from "./accounts-table";
+
+
+export const userRoleEnum = pgEnum("userRole", ['ADMIN', 'USER', 'GUEST']);
 
 export const usersTable = pgTable("users", {
   id: uuid("id").primaryKey().defaultRandom(),
@@ -17,6 +21,7 @@ export const usersTable = pgTable("users", {
     .$defaultFn(() => false)
     .notNull(),
   image: text("image"),
+  role: userRoleEnum("role").notNull().default('GUEST'),
   createdAt: timestamp("created_at").defaultNow()
     .notNull(),
   updatedAt: timestamp("updated_at").defaultNow()
